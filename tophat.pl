@@ -50,7 +50,7 @@ if ($user_database_path) {
   unless (`grep \\> $database_path`) {
       die "Error: $database_path  the user supplied file is not a FASTA file";
   }
-  my $name = $basename($database_path, qw/.fa .fas .fasta .fna/);
+  my $name = basename($database_path, qw/.fa .fas .fasta .fna/);
   print STDERR "bowtie-indexing $name\n";
   system $bowtiep . "bowtie-build $database_path $name";
   $database_path = $name;
